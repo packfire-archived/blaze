@@ -2,6 +2,8 @@
 
 namespace Packfire\Blaze\Meta;
 
+use phpDocumentor\Reflection\DocBlock;
+
 class Attribute
 {
     protected $property;
@@ -30,5 +32,25 @@ class Attribute
     public function type()
     {
         return $this->type;
+    }
+
+    public static function load(\ReflectionProperty $property)
+    {
+        $propertyBlock = new DocBlock($property);
+        $name = $property->getName();
+        $attribute = null;
+        $type = null;
+        $attributeTags = $propertyBlock->getTagsByName('attribute');
+        if ($attributeTags) {
+            $attribute = $attributeTags[0]->getContent();
+        }
+        $variableTags = $propertyBlock->getTagsByName('var');
+        if ($variableTags) {
+            $type = $variableTags[0]->getContent();
+        }
+        if ($attribute && $type) {
+            return new Attribute($name, $attribute, $type);
+        }
+        return null;
     }
 }

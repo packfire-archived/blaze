@@ -29,35 +29,21 @@ class Entity
         $this->attributes = array();
         $properties = self::getClassProperties($class);
         foreach ($properties as $property) {
-            $propertyBlock = new DocBlock($property);
-            $name = $property->getName();
-            $attribute = null;
-            $type = null;
-            $attributeTags = $propertyBlock->getTagsByName('attribute');
-            if ($attributeTags) {
-                $attribute = $attributeTags[0]->getContent();
-            }
-            $variableTags = $propertyBlock->getTagsByName('var');
-            if ($variableTags) {
-                $type = $variableTags[0]->getContent();
-            }
-            if ($attribute && $type) {
-                $this->attributes[] = new Attribute($name, $attribute, $type);
+            $attribute = Attribute::load($property);
+            if ($attribute) {
+                $this->attributes[] = $attribute;
             }
         }
     }
 
     /**
      * Gets all the properties of a class recursively.
-     * @param string|\ReflectionClass $class The class or the name of it.
+     * @param \ReflectionClass $class The class or the name of it.
      * @return \ReflectionProperty[] Returns an array of property names in the class.
      * @since 1.0.0
      */
-    protected static function getClassProperties($class)
+    protected static function getClassProperties(\ReflectionClass $class)
     {
-        if (is_string($class)) {
-            $class = new \ReflectionClass($class);
-        }
         $properties = $class->getProperties();
         $result = array();
         foreach ($properties as $property) {
