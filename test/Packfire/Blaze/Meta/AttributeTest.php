@@ -21,6 +21,15 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('string', $attribute->type());
     }
 
+    public function testLoadEmpty()
+    {
+        $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Fixture\\BiggerDummy', 'height'));
+        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Attribute', $attribute);
+        $this->assertEquals('height', $attribute->property());
+        $this->assertEquals('height', $attribute->attribute());
+        $this->assertEquals('double', $attribute->type());
+    }
+
     public function testFail()
     {
         $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Meta\\Entity', 'entity'));
