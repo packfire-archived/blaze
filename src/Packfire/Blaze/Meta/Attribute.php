@@ -54,13 +54,23 @@ class Attribute
                 $attribute = $name;
             }
 
-            $variableTags = $propertyBlock->getTagsByName('var');
-            if ($variableTags) {
-                $type = $variableTags[0]->getContent();
+            $type = self::fetchTag($propertyBlock, 'type');
+            if (!$type) {
+                $type = self::fetchTag($propertyBlock, 'var');
             }
             if ($type) {
                 $result = new Attribute($name, $attribute, $type);
             }
+        }
+        return $result;
+    }
+
+    protected static function fetchTag(DocBlock $docBlock, $name)
+    {
+        $result = null;
+        $tags = $docBlock->getTagsByName($name);
+        if ($tags) {
+            $result = $tags[0]->getContent();
         }
         return $result;
     }
