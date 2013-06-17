@@ -70,8 +70,9 @@ class MySql implements DriverInterface
         return implode(",\n", $attributes) . "\n";
     }
 
-    protected function typeChecker($type){
-        switch(strtolower($type)){
+    protected function typeChecker($type)
+    {
+        switch (strtolower($type)) {
             case 'string':
                 return 'TEXT';
                 break;
