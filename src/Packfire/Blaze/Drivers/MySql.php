@@ -10,6 +10,21 @@ class MySql implements DriverInterface
 
     protected $charset;
 
+    private static $options = array(
+        'database',
+        'engine',
+        'charset'
+    );
+
+    public function __construct($options = array())
+    {
+        foreach (self::$options as $key) {
+            if (isset($options[$key])) {
+                $this->$key = $options[$key];
+            }
+        }
+    }
+
     public function generate($entities)
     {
         $script = '';
