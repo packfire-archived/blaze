@@ -20,6 +20,16 @@ class MySql implements DriverInterface
         if ($this->charset) {
             $tableOptions .= 'DEFAULT CHARSET=' . $this->charset . ' ';
         }
+
+        if ($this->database) {
+            $script .= 'CREATE DATABASE IF NOT EXISTS `' . $this->database . '`';
+            if ($this->charset) {
+                $script .= ' DEFAULT CHARSET=' . $this->charset . ' ';
+            }
+            $script .= ";\n";
+            $script .= 'USE `' . $this->database . '`;';
+        }
+
         foreach ($entities as $entity) {
             $entity->parse();
             $script .= '-- Generating for entity ' . $entity->className() . "\n";
