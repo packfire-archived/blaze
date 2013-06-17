@@ -9,6 +9,7 @@ class BiggerDummy extends Dummy
 {
     /**
      * @attribute Age
+     * @type TINYINT
      * @var integer
      */
     public $age;
