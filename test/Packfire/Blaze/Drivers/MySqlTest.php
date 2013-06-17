@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS`dummies` (
   `Name` TEXT,
   `Age` TINYINT,
   `height` double
-);
+) ;
 
 
 EOT;
