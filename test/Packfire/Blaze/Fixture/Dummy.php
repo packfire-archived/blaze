@@ -10,6 +10,6 @@ class Dummy
     /**
      * @attribute Name
      * @var string
-     */ 
+     */
     public $name;
 }
