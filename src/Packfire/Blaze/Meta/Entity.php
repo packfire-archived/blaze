@@ -6,24 +6,24 @@ use phpDocumentor\Reflection\DocBlock;
 
 class Entity
 {
-    protected $name;
+    protected $className;
 
-    protected $entity;
+    protected $name;
 
     protected $attributes;
 
-    public function __construct($name)
+    public function __construct($className)
     {
-        $this->name = $name;
+        $this->className = $className;
     }
 
     public function parse()
     {
-        $class = new \ReflectionClass($this->name);
+        $class = new \ReflectionClass($this->className);
         $classBlock = new DocBlock($class);
         $entityTags = $classBlock->getTagsByName('entity');
         if ($entityTags) {
-            $this->entity = $entityTags[0]->getContent();
+            $this->name = $entityTags[0]->getContent();
         }
 
         $this->attributes = array();
@@ -56,14 +56,14 @@ class Entity
         return $result;
     }
 
+    public function className()
+    {
+        return $this->className;
+    }
+
     public function name()
     {
         return $this->name;
-    }
-
-    public function entity()
-    {
-        return $this->entity;
     }
 
     public function attributes()

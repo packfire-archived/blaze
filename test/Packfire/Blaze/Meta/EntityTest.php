@@ -10,8 +10,8 @@ class EntityTest extends \PHPUnit_Framework_TestCase
     public function testName()
     {
         $entity = new Entity(self::DUMMY);
-        $this->assertEquals(self::DUMMY, $entity->name());
-        $this->assertNull($entity->entity());
+        $this->assertEquals(self::DUMMY, $entity->className());
+        $this->assertNull($entity->name());
         $this->assertNull($entity->attributes());
     }
 
@@ -19,8 +19,8 @@ class EntityTest extends \PHPUnit_Framework_TestCase
     {
         $entity = new Entity(self::DUMMY);
         $entity->parse();
-        $this->assertEquals(self::DUMMY, $entity->name());
-        $this->assertEquals('dummies', $entity->entity());
+        $this->assertEquals(self::DUMMY, $entity->className());
+        $this->assertEquals('dummies', $entity->name());
     }
 
     public function testNoneAttributes()
@@ -37,7 +37,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase
         $entity->parse();
         $attributes = $entity->attributes();
         $this->assertCount(1, $attributes);
-        $this->assertEquals('Name', $attributes[0]->attribute());
+        $this->assertEquals('Name', $attributes[0]->name());
     }
 
     public function testExtendedAttributes()
@@ -46,8 +46,8 @@ class EntityTest extends \PHPUnit_Framework_TestCase
         $entity->parse();
         $attributes = $entity->attributes();
         $this->assertCount(3, $attributes);
-        $this->assertEquals('Name', $attributes[0]->attribute());
-        $this->assertEquals('Age', $attributes[1]->attribute());
-        $this->assertEquals('height', $attributes[2]->attribute());
+        $this->assertEquals('Name', $attributes[0]->name());
+        $this->assertEquals('Age', $attributes[1]->name());
+        $this->assertEquals('height', $attributes[2]->name());
     }
 }

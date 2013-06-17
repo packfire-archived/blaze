@@ -8,14 +8,14 @@ class Attribute
 {
     protected $property;
 
-    protected $attribute;
+    protected $name;
 
     protected $type;
 
-    public function __construct($property, $attribute, $type)
+    public function __construct($property, $name, $type)
     {
         $this->property = $property;
-        $this->attribute = $attribute;
+        $this->name = $name;
         $this->type = $type;
     }
 
@@ -24,9 +24,9 @@ class Attribute
         return $this->property;
     }
 
-    public function attribute()
+    public function name()
     {
-        return $this->attribute;
+        return $this->name;
     }
 
     public function type()
@@ -38,8 +38,8 @@ class Attribute
     {
         $propertyBlock = new DocBlock($property);
 
-        $name = $property->getName();
-        $attribute = null;
+        $propertyName = $property->getName();
+        $attributeName = null;
         $type = null;
 
         $result = null;
@@ -47,11 +47,11 @@ class Attribute
         if ($attributeTags) {
             // attribute tag is very important. it signifies the glory
             // that an entity holds.
-            $attribute = $attributeTags[0]->getContent();
+            $attributeName = $attributeTags[0]->getContent();
 
             // if annotation is empty, we fill it with the property name
-            if (!$attribute) {
-                $attribute = $name;
+            if (!$attributeName) {
+                $attributeName = $propertyName;
             }
 
             $type = self::fetchTag($propertyBlock, 'type');
@@ -59,7 +59,7 @@ class Attribute
                 $type = self::fetchTag($propertyBlock, 'var');
             }
             if ($type) {
-                $result = new Attribute($name, $attribute, $type);
+                $result = new Attribute($propertyName, $attributeName, $type);
             }
         }
         return $result;

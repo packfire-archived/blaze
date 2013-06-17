@@ -8,7 +8,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     {
         $attribute = new Attribute('name', 'Name', 'string');
         $this->assertEquals('name', $attribute->property());
-        $this->assertEquals('Name', $attribute->attribute());
+        $this->assertEquals('Name', $attribute->name());
         $this->assertEquals('string', $attribute->type());
     }
 
@@ -17,7 +17,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Fixture\\Dummy', 'name'));
         $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Attribute', $attribute);
         $this->assertEquals('name', $attribute->property());
-        $this->assertEquals('Name', $attribute->attribute());
+        $this->assertEquals('Name', $attribute->name());
         $this->assertEquals('string', $attribute->type());
     }
 
@@ -26,7 +26,7 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Fixture\\BiggerDummy', 'age'));
         $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Attribute', $attribute);
         $this->assertEquals('age', $attribute->property());
-        $this->assertEquals('Age', $attribute->attribute());
+        $this->assertEquals('Age', $attribute->name());
         $this->assertEquals('TINYINT', $attribute->type());
     }
 
@@ -35,13 +35,13 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
         $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Fixture\\BiggerDummy', 'height'));
         $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Attribute', $attribute);
         $this->assertEquals('height', $attribute->property());
-        $this->assertEquals('height', $attribute->attribute());
+        $this->assertEquals('height', $attribute->name());
         $this->assertEquals('double', $attribute->type());
     }
 
     public function testFail()
     {
-        $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Meta\\Entity', 'entity'));
+        $attribute = Attribute::load(new \ReflectionProperty('Packfire\\Blaze\\Meta\\Entity', 'name'));
         $this->assertNull($attribute);
     }
 }
