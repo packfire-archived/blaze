@@ -23,6 +23,14 @@ class EntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('dummies', $entity->entity());
     }
 
+    public function testNoneAttributes()
+    {
+        $entity = new Entity('Packfire\\Blaze\\Meta\\Entity');
+        $entity->parse();
+        $attributes = $entity->attributes();
+        $this->assertCount(0, $attributes);
+    }
+
     public function testAttributes()
     {
         $entity = new Entity(self::DUMMY);
@@ -37,8 +45,9 @@ class EntityTest extends \PHPUnit_Framework_TestCase
         $entity = new Entity(self::BIGGER_DUMMY);
         $entity->parse();
         $attributes = $entity->attributes();
-        $this->assertCount(2, $attributes);
+        $this->assertCount(3, $attributes);
         $this->assertEquals('Name', $attributes[0]->attribute());
         $this->assertEquals('Age', $attributes[1]->attribute());
+        $this->assertEquals('height', $attributes[2]->attribute());
     }
 }
