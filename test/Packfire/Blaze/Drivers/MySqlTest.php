@@ -6,14 +6,13 @@ use Packfire\Blaze\Meta\Entity;
 
 class MySqlTest extends \PHPUnit_Framework_TestCase
 {
-    const DUMMY = 'Packfire\\Blaze\\Fixture\\Dummy';
-    const BIGGER_DUMMY = 'Packfire\\Blaze\\Fixture\\BiggerDummy';
+    const DUMMY = 'Packfire\\Blaze\\Fixture\\BiggerDummy';
 
     public function testGenerate()
     {
         $driver = new MySql();
         $entities = array(
-            new Entity(self::BIGGER_DUMMY)
+            new Entity(self::DUMMY)
         );
         
         $proper = <<<EOT
