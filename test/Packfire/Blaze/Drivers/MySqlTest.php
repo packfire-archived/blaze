@@ -16,12 +16,75 @@ class MySqlTest extends \PHPUnit_Framework_TestCase
         );
         
         $proper = <<<EOT
+------
 -- Generating for entity Packfire\Blaze\Fixture\BiggerDummy
+------
 CREATE TABLE IF NOT EXISTS`dummies` (
   `Name` TEXT,
   `Age` TINYINT,
   `height` double
 ) ;
+
+
+EOT;
+        $this->assertEquals($proper, $driver->generate($entities));
+    }
+
+    public function testGenerateWithParams()
+    {
+        $driver = new MySql(
+            array(
+                'engine' => 'INNODB',
+                'charset' => 'utf8'
+            )
+        );
+        $entities = array(
+            new Entity(self::DUMMY)
+        );
+        
+        $proper = <<<EOT
+------
+-- Generating for entity Packfire\Blaze\Fixture\BiggerDummy
+------
+CREATE TABLE IF NOT EXISTS`dummies` (
+  `Name` TEXT,
+  `Age` TINYINT,
+  `height` double
+) ENGINE=INNODB DEFAULT CHARSET=utf8 ;
+
+
+EOT;
+        $this->assertEquals($proper, $driver->generate($entities));
+    }
+
+    public function testGenerateWithDatabase()
+    {
+        $driver = new MySql(
+            array(
+                'engine' => 'INNODB',
+                'charset' => 'utf8',
+                'database' => 'test'
+            )
+        );
+        $entities = array(
+            new Entity(self::DUMMY)
+        );
+        
+        $proper = <<<EOT
+------
+-- Creating Database
+------
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARSET=utf8;
+USE `test`;
+
+------
+-- Generating for entity Packfire\Blaze\Fixture\BiggerDummy
+------
+CREATE TABLE IF NOT EXISTS`dummies` (
+  `Name` TEXT,
+  `Age` TINYINT,
+  `height` double
+) ENGINE=INNODB DEFAULT CHARSET=utf8 ;
 
 
 EOT;

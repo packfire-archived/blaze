@@ -37,17 +37,22 @@ class MySql implements DriverInterface
         }
 
         if ($this->database) {
+            $script .= "------\n";
+            $script .= "-- Creating Database\n";
+            $script .= "------\n";
             $script .= 'CREATE DATABASE IF NOT EXISTS `' . $this->database . '`';
             if ($this->charset) {
-                $script .= ' DEFAULT CHARSET=' . $this->charset . ' ';
+                $script .= ' DEFAULT CHARSET=' . $this->charset;
             }
             $script .= ";\n";
-            $script .= 'USE `' . $this->database . '`;';
+            $script .= 'USE `' . $this->database . '`;' . "\n\n";
         }
 
         foreach ($entities as $entity) {
             $entity->parse();
+            $script .= "------\n";
             $script .= '-- Generating for entity ' . $entity->className() . "\n";
+            $script .= "------\n";
             $script .= 'CREATE TABLE IF NOT EXISTS`' . $entity->name() . '` (' . "\n";
             $script .= $this->attributesBuilder($entity);
             $script .= ') ' . $tableOptions . ';' . "\n\n";
