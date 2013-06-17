@@ -37,20 +37,31 @@ class Attribute
     public static function load(\ReflectionProperty $property)
     {
         $propertyBlock = new DocBlock($property);
+
         $name = $property->getName();
         $attribute = null;
         $type = null;
+
+        $result = null;
         $attributeTags = $propertyBlock->getTagsByName('attribute');
         if ($attributeTags) {
+            // attribute tag is very important. it signifies the glory
+            // that an entity holds.
             $attribute = $attributeTags[0]->getContent();
+
+            // if annotation is empty, we fill it with the property name
+            if (!$attribute) {
+                $attribute = $name;
+            }
+
+            $variableTags = $propertyBlock->getTagsByName('var');
+            if ($variableTags) {
+                $type = $variableTags[0]->getContent();
+            }
+            if ($type) {
+                $result = new Attribute($name, $attribute, $type);
+            }
         }
-        $variableTags = $propertyBlock->getTagsByName('var');
-        if ($variableTags) {
-            $type = $variableTags[0]->getContent();
-        }
-        if ($attribute && $type) {
-            return new Attribute($name, $attribute, $type);
-        }
-        return null;
+        return $result;
     }
 }
