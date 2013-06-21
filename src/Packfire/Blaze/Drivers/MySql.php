@@ -49,7 +49,6 @@ class MySql implements DriverInterface
         }
 
         foreach ($entities as $entity) {
-            $entity->parse();
             $script .= "------\n";
             $script .= '-- Generating for entity ' . $entity->className() . "\n";
             $script .= "------\n";

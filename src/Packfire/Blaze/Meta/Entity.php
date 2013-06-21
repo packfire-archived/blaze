@@ -12,28 +12,31 @@ class Entity
 
     protected $attributes;
 
-    public function __construct($className)
+    public function __construct($className, $name, $attributes)
     {
         $this->className = $className;
+        $this->name = $name;
+        $this->attributes = $attributes;
     }
 
-    public function parse()
+    public static function load(\ReflectionClass $class)
     {
-        $class = new \ReflectionClass($this->className);
         $classBlock = new DocBlock($class);
         $entityTags = $classBlock->getTagsByName('entity');
         if ($entityTags) {
-            $this->name = $entityTags[0]->getContent();
-        }
+            $name = $entityTags[0]->getContent();
 
-        $this->attributes = array();
-        $properties = self::getClassProperties($class);
-        foreach ($properties as $property) {
-            $attribute = Attribute::load($property);
-            if ($attribute) {
-                $this->attributes[] = $attribute;
+            $attributes = array();
+            $properties = self::getClassProperties($class);
+            foreach ($properties as $property) {
+                $attribute = Attribute::load($property);
+                if ($attribute) {
+                    $attributes[] = $attribute;
+                }
             }
+            return new self($class->getName(), $name, $attributes);
         }
+        return null;
     }
 
     /**

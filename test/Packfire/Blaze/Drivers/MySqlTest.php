@@ -12,7 +12,7 @@ class MySqlTest extends \PHPUnit_Framework_TestCase
     {
         $driver = new MySql();
         $entities = array(
-            new Entity(self::DUMMY)
+            Entity::load(new \ReflectionClass(self::DUMMY))
         );
         
         $proper = <<<EOT
@@ -39,7 +39,7 @@ EOT;
             )
         );
         $entities = array(
-            new Entity(self::DUMMY)
+            Entity::load(new \ReflectionClass(self::DUMMY))
         );
         
         $proper = <<<EOT
@@ -67,7 +67,7 @@ EOT;
             )
         );
         $entities = array(
-            new Entity(self::DUMMY)
+            Entity::load(new \ReflectionClass(self::DUMMY))
         );
         
         $proper = <<<EOT
