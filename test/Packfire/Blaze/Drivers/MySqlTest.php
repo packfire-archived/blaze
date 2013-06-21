@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Drivers;
 
-use Packfire\Blaze\Meta\Entity;
+use Packfire\Blaze\Meta\EntityLoader;
 
 class MySqlTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,7 +12,7 @@ class MySqlTest extends \PHPUnit_Framework_TestCase
     {
         $driver = new MySql();
         $entities = array(
-            Entity::load(new \ReflectionClass(self::DUMMY))
+            EntityLoader::load(new \ReflectionClass(self::DUMMY))
         );
         
         $proper = <<<EOT
@@ -39,7 +39,7 @@ EOT;
             )
         );
         $entities = array(
-            Entity::load(new \ReflectionClass(self::DUMMY))
+            EntityLoader::load(new \ReflectionClass(self::DUMMY))
         );
         
         $proper = <<<EOT
@@ -67,7 +67,7 @@ EOT;
             )
         );
         $entities = array(
-            Entity::load(new \ReflectionClass(self::DUMMY))
+            EntityLoader::load(new \ReflectionClass(self::DUMMY))
         );
         
         $proper = <<<EOT
