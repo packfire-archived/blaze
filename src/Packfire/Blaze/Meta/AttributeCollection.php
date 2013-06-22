@@ -33,11 +33,7 @@ class AttributeCollection implements CollectionInterface
 
     public function offsetSet($offset, $value)
     {
-        if ($offset) {
-            $this->attributes[$offset] = $value;
-        } else {
-            $this->attributes[] = $value;
-        }
+        $this->add($value);
     }
 
     public function offsetUnset($offset)
