@@ -28,5 +28,22 @@ class AttributeCollectionTest extends \PHPUnit_Framework_TestCase
         $attribute = new Attribute('test', 'test', 'text');
         $collection->add($attribute);
         $this->assertEquals($attribute, $collection->get(0));
+        $this->assertNull($collection->get(500));
+    }
+
+    public function testArrayAccess()
+    {
+        $collection = new AttributeCollection();
+        $this->assertFalse(isset($collection['nonExist']));
+        $collection[] = new Attribute('test', 'test', 'text');
+        $this->assertTrue(isset($collection[0]));
+        unset($collection[0]);
+        $this->assertFalse(isset($collection[0]));
+    }
+
+    public function testIteratorAggregate()
+    {
+        $collection = new AttributeCollection();
+        $this->assertInstanceOf('Traversable', $collection->getIterator());
     }
 }
