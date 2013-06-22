@@ -1,0 +1,26 @@
+<?php
+
+namespace Packfire\Blaze\Meta\Index;
+
+class Unique implements IndexInterface
+{
+    protected $attributes;
+
+    protected $name;
+
+    public function __construct($name)
+    {
+        $this->attributes = new AttributeCollection();
+        $this->name = $name;
+    }
+
+    public function attributes()
+    {
+        return $this->attributes;
+    }
+
+    public function name()
+    {
+        return $this->name;
+    }
+}
