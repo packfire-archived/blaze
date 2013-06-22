@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2d3e84d3af1e6b88d17f928748ada9e4",
+    "hash": "5b80ee150f658c44c9de43af9a1c876f",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -58,6 +58,92 @@
                 "markdown"
             ],
             "time": "2012-01-15 19:36:37"
+        },
+        {
+            "name": "mauris/yaml",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpdeveloper/Yaml.git",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpdeveloper/Yaml/zipball/1.0.0",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Sam-Mauris Yong",
+                    "email": "sam@mauris.sg"
+                }
+            ],
+            "description": "Mauris Build of the Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "parser",
+                "yaml"
+            ],
+            "time": "2013-05-02 11:55:31"
+        },
+        {
+            "name": "packfire/config",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/packfire/config.git",
+                "reference": "1.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/packfire/config/zipball/1.0.1",
+                "reference": "1.0.1",
+                "shasum": ""
+            },
+            "require": {
+                "mauris/yaml": "1.0.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Packfire\\Config": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sam-Mauris Yong",
+                    "email": "sam@mauris.sg"
+                }
+            ],
+            "description": "A config driver that is easy to use",
+            "time": "2013-05-02 12:22:46"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
