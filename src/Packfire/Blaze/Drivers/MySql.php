@@ -50,9 +50,9 @@ class MySql implements DriverInterface
 
         foreach ($entities as $entity) {
             $script .= "------\n";
-            $script .= '-- Generating for entity ' . $entity->className() . "\n";
+            $script .= '-- Generating entity for class `' . $entity->className() . "`\n";
             $script .= "------\n";
-            $script .= 'CREATE TABLE IF NOT EXISTS`' . $entity->name() . '` (' . "\n";
+            $script .= 'CREATE TABLE IF NOT EXISTS `' . $entity->name() . '` (' . "\n";
             $script .= $this->attributesBuilder($entity);
             $script .= ') ' . $tableOptions . ';' . "\n\n";
         }
