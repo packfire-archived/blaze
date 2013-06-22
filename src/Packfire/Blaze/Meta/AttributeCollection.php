@@ -6,14 +6,43 @@ class AttributeCollection implements CollectionInterface
 {
     protected $attributes = array();
 
-    public function add(\Attribute $value)
+    public function add($value)
     {
-
+        if (!($value instanceof Attribute)) {
+            throw new \InvalidArgumentException("$value expected to be of type Packfire\\Blaze\\Meta\\Attribute in AttributeCollection.");
+        }
+        $this->attributes[] = $value;
     }
 
     public function get($index)
     {
+        if (isset($this->attributes[$index])) {
+            return $this->attributes[$index];
+        }
+    }
 
+    public function offsetExists($offset)
+    {
+        return isset($this->attributes[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->attributes[$offset];
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        if ($offset) {
+            $this->attributes[$offset] = $value;
+        } else {
+            $this->attributes[] = $value;
+        }
+    }
+
+    public function offsetUnset($offset)
+    {
+        unset($this->attributes[$offset]);
     }
 
     public function count()
