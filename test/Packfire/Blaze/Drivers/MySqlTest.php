@@ -17,9 +17,9 @@ class MySqlTest extends \PHPUnit_Framework_TestCase
         
         $proper = <<<EOT
 ------
--- Generating for entity Packfire\Blaze\Fixture\BiggerDummy
+-- Generating entity for class `Packfire\Blaze\Fixture\BiggerDummy`
 ------
-CREATE TABLE IF NOT EXISTS`dummies` (
+CREATE TABLE IF NOT EXISTS `dummies` (
   `Name` TEXT,
   `Age` TINYINT,
   `height` double
@@ -44,9 +44,9 @@ EOT;
         
         $proper = <<<EOT
 ------
--- Generating for entity Packfire\Blaze\Fixture\BiggerDummy
+-- Generating entity for class `Packfire\Blaze\Fixture\BiggerDummy`
 ------
-CREATE TABLE IF NOT EXISTS`dummies` (
+CREATE TABLE IF NOT EXISTS `dummies` (
   `Name` TEXT,
   `Age` TINYINT,
   `height` double
@@ -78,9 +78,9 @@ CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARSET=utf8;
 USE `test`;
 
 ------
--- Generating for entity Packfire\Blaze\Fixture\BiggerDummy
+-- Generating entity for class `Packfire\Blaze\Fixture\BiggerDummy`
 ------
-CREATE TABLE IF NOT EXISTS`dummies` (
+CREATE TABLE IF NOT EXISTS `dummies` (
   `Name` TEXT,
   `Age` TINYINT,
   `height` double
