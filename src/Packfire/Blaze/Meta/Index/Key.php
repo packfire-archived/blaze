@@ -2,6 +2,9 @@
 
 namespace Packfire\Blaze\Meta\Index;
 
+use Packfire\Blaze\Meta\IndexInterface;
+use Packfire\Blaze\Meta\AttributeCollection;
+
 class Key implements IndexInterface
 {
     protected $attributes;

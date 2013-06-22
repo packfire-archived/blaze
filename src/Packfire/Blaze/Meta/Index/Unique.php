@@ -2,6 +2,9 @@
 
 namespace Packfire\Blaze\Meta\Index;
 
+use Packfire\Blaze\Meta\IndexInterface;
+use Packfire\Blaze\Meta\AttributeCollection;
+
 class Unique implements IndexInterface
 {
     protected $attributes;
