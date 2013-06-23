@@ -10,11 +10,20 @@ class Entity
 
     protected $attributes;
 
-    public function __construct($className, $name, $attributes)
+    protected $indexes;
+
+    public function __construct($className, $name, $attributes = null, $indexes = null)
     {
         $this->className = $className;
         $this->name = $name;
+        if (null === $attributes) {
+            $attributes = new AttributeCollection();
+        }
         $this->attributes = $attributes;
+        if (null === $indexes) {
+            $indexes = new IndexCollection();
+        }
+        $this->indexes = $indexes;
     }
 
     public function className()
@@ -30,5 +39,10 @@ class Entity
     public function attributes()
     {
         return $this->attributes;
+    }
+
+    public function indexes()
+    {
+        return $this->indexes;
     }
 }
