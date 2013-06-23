@@ -13,12 +13,12 @@ class EntityLoader
         if ($entityTags) {
             $name = $entityTags[0]->getContent();
 
-            $attributes = array();
+            $attributes = new AttributeCollection();
             $properties = self::getClassProperties($class);
             foreach ($properties as $property) {
                 $attribute = AttributeLoader::load($property);
                 if ($attribute) {
-                    $attributes[] = $attribute;
+                    $attributes->add($attribute);
                 }
             }
             return new Entity($class->getName(), $name, $attributes);

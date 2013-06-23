@@ -12,7 +12,7 @@ class Entity
 
     protected $indexes;
 
-    public function __construct($className, $name, $attributes = null, $indexes = null)
+    public function __construct($className, $name, AttributeCollection $attributes = null, IndexCollection $indexes = null)
     {
         $this->className = $className;
         $this->name = $name;
