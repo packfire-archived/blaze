@@ -18,4 +18,9 @@ class PrimaryKey implements IndexInterface
     {
         return $this->attributes;
     }
+
+    public function name()
+    {
+        return IndexUtility::name($this, 'pk_');
+    }
 }
