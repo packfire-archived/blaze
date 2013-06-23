@@ -9,12 +9,9 @@ class Key implements IndexInterface
 {
     protected $attributes;
 
-    protected $name;
-
-    public function __construct($name)
+    public function __construct()
     {
         $this->attributes = new AttributeCollection();
-        $this->name = $name;
     }
 
     public function attributes()
@@ -24,6 +21,6 @@ class Key implements IndexInterface
 
     public function name()
     {
-        return $this->name;
+        return IndexUtility::name($this);
     }
 }
