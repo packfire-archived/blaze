@@ -10,9 +10,12 @@ class ForeignKey implements IndexInterface
 {
     protected $attributes;
 
-    public function __construct()
+    protected $reference;
+
+    public function __construct(Reference $reference)
     {
         $this->attributes = new AttributeCollection();
+        $this->reference = $reference;
     }
 
     public function attributes()
@@ -23,5 +26,10 @@ class ForeignKey implements IndexInterface
     public function name()
     {
         return IndexUtility::name($this, 'fk_');
+    }
+
+    public function reference()
+    {
+        return $this->reference;
     }
 }
