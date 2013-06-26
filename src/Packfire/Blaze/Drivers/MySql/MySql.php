@@ -50,24 +50,10 @@ class MySql implements DriverInterface
             $script .= 'USE `' . $this->database . '`;' . "\n\n";
         }
 
+        $builder = new EntityBuilder($tableOptions);
         foreach ($entities as $entity) {
-            $script .= "------\n";
-            $script .= '-- Generating entity for class `' . $entity->className() . "`\n";
-            $script .= "------\n";
-            $script .= 'CREATE TABLE IF NOT EXISTS `' . $entity->name() . '` (' . "\n";
-            $script .= $this->attributesBuilder($entity);
-            $script .= ') ' . $tableOptions . ';' . "\n\n";
+            $script .= $builder->build($entity);
         }
         return $script;
-    }
-
-    protected function attributesBuilder($entity)
-    {
-        $builder = new AttributeBuilder();
-        $attributes = array();
-        foreach ($entity->attributes() as $attribute) {
-            $attributes[] = $builder->build($attribute);
-        }
-        return implode(",\n", $attributes) . "\n";
     }
 }
