@@ -1,10 +1,10 @@
 <?php
 
-namespace Packfire\Blaze\Drivers
+namespace Packfire\Blaze\Drivers;
 
-use Packfire\Blaze\Meta\Entity;
+use Packfire\Blaze\Meta\EntityInterface;
 
 interface EntityBuilderInterface
 {
-    public function build(Entity $attribute);
+    public function build(EntityInterface $attribute);
 }

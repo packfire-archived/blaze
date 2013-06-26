@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Meta;
 
-class Entity
+class Entity implements EntityInterface
 {
     protected $className;
 
