@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "5b80ee150f658c44c9de43af9a1c876f",
+    "hash": "372f053a0d5e038dc56d8769d5bb6c17",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -144,6 +144,50 @@
             ],
             "description": "A config driver that is easy to use",
             "time": "2013-05-02 12:22:46"
+        },
+        {
+            "name": "packfire/fuelblade",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/packfire/fuelblade.git",
+                "reference": "1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/packfire/fuelblade/zipball/1.1.1",
+                "reference": "1.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Packfire\\FuelBlade\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sam-Mauris Yong",
+                    "email": "mauris@hotmail.sg",
+                    "homepage": "http://mauris.sg/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Packfire FuelBlade - Dependency Injection / IoC library for PHP",
+            "homepage": "http://mauris.sg/packfire/",
+            "keywords": [
+                "dependency",
+                "di",
+                "ioc"
+            ],
+            "time": "2013-06-13 07:49:52"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
