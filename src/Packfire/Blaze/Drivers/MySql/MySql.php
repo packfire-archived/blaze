@@ -63,21 +63,11 @@ class MySql implements DriverInterface
 
     protected function attributesBuilder($entity)
     {
+        $builder = new AttributeBuilder();
         $attributes = array();
         foreach ($entity->attributes() as $attribute) {
-            $type = $this->typeChecker($attribute->type());
-            $attributes[] = '  `' . $attribute->name() . '` ' . $type;
+            $attributes[] = $builder->build($attribute);
         }
         return implode(",\n", $attributes) . "\n";
-    }
-
-    protected function typeChecker($type)
-    {
-        switch (strtolower($type)) {
-            case 'string':
-                return 'TEXT';
-                break;
-        }
-        return $type;
     }
 }
