@@ -2,8 +2,8 @@
 
 namespace Packfire\Blaze\Utility;
 
-use Packfire\Blaze\Meta\IndexInterface;
-use Packfire\Blaze\Meta\AttributeCollection;
+use Packfire\Blaze\Meta\Index\IndexInterface;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
 
 class IndexUtility
 {

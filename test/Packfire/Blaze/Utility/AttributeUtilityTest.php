@@ -2,8 +2,8 @@
 
 namespace Packfire\Blaze\Utility;
 
-use Packfire\Blaze\Meta\AttributeCollection;
-use Packfire\Blaze\Meta\Attribute;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
+use Packfire\Blaze\Meta\Attribute\Attribute;
 
 class AttributeUtilityTest extends \PHPUnit_Framework_TestCase
 {

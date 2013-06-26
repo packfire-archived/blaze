@@ -1,6 +1,8 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Index;
+
+use Packfire\Blaze\Meta\CollectionInterface;
 
 class IndexCollection implements CollectionInterface
 {
@@ -9,7 +11,7 @@ class IndexCollection implements CollectionInterface
     public function add($value)
     {
         if (!($value instanceof IndexInterface)) {
-            throw new \InvalidArgumentException("$value expected to be of type Packfire\\Blaze\\Meta\\IndexInterface in IndexCollection.");
+            throw new \InvalidArgumentException("$value expected to be of type Packfire\\Blaze\\Meta\\Index\\IndexInterface in IndexCollection.");
         }
         $this->keys[] = $value;
     }

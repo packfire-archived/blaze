@@ -1,6 +1,9 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Entity;
+
+use Packfire\Blaze\Meta\Index\IndexCollection;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
 
 class EntityTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,8 +15,8 @@ class EntityTest extends \PHPUnit_Framework_TestCase
         $entity = new Entity(self::DUMMY, 'test');
         $this->assertEquals(self::DUMMY, $entity->className());
         $this->assertEquals('test', $entity->name());
-        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\AttributeCollection', $entity->attributes());
-        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\IndexCollection', $entity->indexes());
+        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Attribute\\AttributeCollection', $entity->attributes());
+        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Index\\IndexCollection', $entity->indexes());
     }
 
     public function testConstructCustom()

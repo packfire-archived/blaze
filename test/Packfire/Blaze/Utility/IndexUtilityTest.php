@@ -3,7 +3,7 @@
 namespace Packfire\Blaze\Utility;
 
 use Packfire\Blaze\Meta\Index\PrimaryKey;
-use Packfire\Blaze\Meta\Attribute;
+use Packfire\Blaze\Meta\Attribute\Attribute;
 
 class IndexUtilityTest extends \PHPUnit_Framework_TestCase
 {

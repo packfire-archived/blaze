@@ -1,6 +1,8 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Attribute;
+
+use Packfire\Blaze\Meta\CollectionInterface;
 
 class AttributeCollection implements CollectionInterface
 {
@@ -8,8 +10,8 @@ class AttributeCollection implements CollectionInterface
 
     public function add($value)
     {
-        if (!($value instanceof Attribute)) {
-            throw new \InvalidArgumentException("$value expected to be of type Packfire\\Blaze\\Meta\\Attribute in AttributeCollection.");
+        if (!($value instanceof AttributeInterface)) {
+            throw new \InvalidArgumentException("$value expected to be of type Packfire\\Blaze\\Meta\\Attribute\\AttributeInterface in AttributeCollection.");
         }
         $this->attributes[] = $value;
     }

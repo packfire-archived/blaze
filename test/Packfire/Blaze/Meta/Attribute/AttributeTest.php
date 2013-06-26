@@ -1,6 +1,6 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Attribute;
 
 class AttributeTest extends \PHPUnit_Framework_TestCase
 {

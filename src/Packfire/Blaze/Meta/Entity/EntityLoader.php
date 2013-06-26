@@ -1,8 +1,10 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Entity;
 
 use phpDocumentor\Reflection\DocBlock;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
+use Packfire\Blaze\Meta\Attribute\AttributeLoader;
 
 class EntityLoader
 {

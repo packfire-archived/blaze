@@ -2,8 +2,7 @@
 
 namespace Packfire\Blaze\Meta\Index;
 
-use Packfire\Blaze\Meta\IndexInterface;
-use Packfire\Blaze\Meta\AttributeCollection;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
 use Packfire\Blaze\Utility\IndexUtility;
 
 class Key implements IndexInterface

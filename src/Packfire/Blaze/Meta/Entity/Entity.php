@@ -1,6 +1,9 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Entity;
+
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
+use Packfire\Blaze\Meta\Index\IndexCollection;
 
 class Entity implements EntityInterface
 {

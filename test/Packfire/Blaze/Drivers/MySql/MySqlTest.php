@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Drivers\MySql;
 
-use Packfire\Blaze\Meta\EntityLoader;
+use Packfire\Blaze\Meta\Entity\EntityLoader;
 
 class MySqlTest extends \PHPUnit_Framework_TestCase
 {

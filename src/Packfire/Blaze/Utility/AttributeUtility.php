@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Utility;
 
-use Packfire\Blaze\Meta\AttributeCollection;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
 
 class AttributeUtility
 {

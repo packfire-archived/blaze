@@ -1,6 +1,6 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Attribute;
 
 class AttributeLoaderTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class AttributeLoaderTest extends \PHPUnit_Framework_TestCase
     public function testFail()
     {
         // non-existing attribute tag
-        $property = new \ReflectionProperty('Packfire\\Blaze\\Meta\\Entity', 'name');
+        $property = new \ReflectionProperty('Packfire\\Blaze\\Meta\\Entity\\Entity', 'name');
         $attribute = Attribute::load($property);
         $this->assertNull($attribute);
     }

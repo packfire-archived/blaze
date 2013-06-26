@@ -1,6 +1,6 @@
 <?php
 
-namespace Packfire\Blaze\Meta;
+namespace Packfire\Blaze\Meta\Entity;
 
 class EntityLoaderTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,7 +16,7 @@ class EntityLoaderTest extends \PHPUnit_Framework_TestCase
 
     public function testNoneAttributes()
     {
-        $entity = EntityLoader::load(new \ReflectionClass('Packfire\\Blaze\\Meta\\Entity'));
+        $entity = EntityLoader::load(new \ReflectionClass('Packfire\\Blaze\\Meta\\Entity\\Entity'));
         $this->assertNull($entity);
     }
 
