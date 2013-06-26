@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Drivers;
 
-use Packfire\Blaze\Meta\EntityInterface;
+use Packfire\Blaze\Meta\Entity\EntityInterface;
 
 interface EntityBuilderInterface
 {

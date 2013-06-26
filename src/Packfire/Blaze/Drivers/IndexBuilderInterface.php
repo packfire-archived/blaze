@@ -1,8 +1,8 @@
 <?php
 
-namespace Packfire\Blaze\Drivers
+namespace Packfire\Blaze\Drivers;
 
-use Packfire\Blaze\Meta\IndexInterface;
+use Packfire\Blaze\Meta\Index\IndexInterface;
 
 interface IndexBuilderInterface
 {

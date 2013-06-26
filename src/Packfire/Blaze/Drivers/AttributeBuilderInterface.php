@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Drivers;
 
-use Packfire\Blaze\Meta\AttributeInterface;
+use Packfire\Blaze\Meta\Attribute\AttributeInterface;
 
 interface AttributeBuilderInterface
 {
