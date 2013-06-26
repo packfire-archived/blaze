@@ -1,10 +1,10 @@
 <?php
 
-namespace Packfire\Blaze\Drivers
+namespace Packfire\Blaze\Drivers;
 
-use Packfire\Blaze\Meta\Attribute;
+use Packfire\Blaze\Meta\AttributeInterface;
 
 interface AttributeBuilderInterface
 {
-    public function build(Attribute $attribute);
+    public function build(AttributeInterface $attribute);
 }

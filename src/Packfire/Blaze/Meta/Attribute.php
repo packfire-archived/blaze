@@ -2,7 +2,7 @@
 
 namespace Packfire\Blaze\Meta;
 
-class Attribute
+class Attribute implements AttributeInterface
 {
     protected $property;
 
