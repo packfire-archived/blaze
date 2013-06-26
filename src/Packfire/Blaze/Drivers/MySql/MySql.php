@@ -1,6 +1,8 @@
 <?php
 
-namespace Packfire\Blaze\Drivers;
+namespace Packfire\Blaze\Drivers\MySql;
+
+use Packfire\Blaze\Drivers\DriverInterface;
 
 class MySql implements DriverInterface
 {
