@@ -19,7 +19,8 @@ class IndexBuilder implements IndexBuilderInterface
     public function build(IndexInterface $index)
     {
         $script = 'ALTER TABLE `' . $this->entity->name() . '` ADD CONSTRAINT `' . $index->name() . '` ';
-        switch(basename(get_class($index)))
+        $name = join('', array_slice(explode('\\', get_class($index)), -1));
+        switch($name)
         {
             case 'PrimaryKey':
                 $script .= 'PRIMARY KEY (' . AttributeUtility::listing($index->attributes()) . ')';
