@@ -5,6 +5,8 @@ namespace Packfire\Blaze\Drivers\MySql;
 use Packfire\Blaze\Meta\Index\PrimaryKey;
 use Packfire\Blaze\Meta\Index\Reference;
 use Packfire\Blaze\Meta\Index\ForeignKey;
+use Packfire\Blaze\Meta\Index\Key;
+
 
 use Packfire\Blaze\Meta\Entity\Entity;
 use Packfire\Blaze\Meta\Attribute\Attribute;
@@ -44,4 +46,19 @@ ALTER TABLE `tests` ADD CONSTRAINT `fk_userid` FOREIGN KEY (`UserId`) REFERENCES
 EOT;
         $this->assertEquals($expectation, $builder->build($index));
     }
+
+    public function testBuildKey()
+    {
+        $entity = new Entity('\\Test', 'tests');
+        $index = new Key();
+        $index->attributes()->add(new Attribute('testId', 'TestId', 'INT NOT NULL AUTOINCREMENT'));
+
+        $builder = new IndexBuilder($entity);
+
+        $expectation = <<<EOT
+ALTER TABLE `tests` ADD CONSTRAINT `idx_testid` INDEX (`TestId`);
+EOT;
+        $this->assertEquals($expectation, $builder->build($index));
+    }
+
 }
