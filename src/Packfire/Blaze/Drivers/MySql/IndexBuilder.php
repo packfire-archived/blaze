@@ -28,7 +28,7 @@ class IndexBuilder implements IndexBuilderInterface
                 $script .= 'INDEX (' . AttributeUtility::listing($index->attributes()) . ')';
                 break;
             case 'ForeignKey':
-                $script .= 'FOREIGN KEY (' . AttributeUtility::listing($index->attributes()) . ') REFERNCES `' . $index->reference()->name() . '` (' . AttributeUtility::listing($index->reference()->attributes()) . ')';
+                $script .= 'FOREIGN KEY (' . AttributeUtility::listing($index->attributes()) . ') REFERENCES `' . $index->reference()->name() . '` (' . AttributeUtility::listing($index->reference()->attributes()) . ')';
                 break;
             case 'Unique':
                 $script .= 'UNIQUE (' . AttributeUtility::listing($index->attributes()) . ')';
