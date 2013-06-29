@@ -6,7 +6,7 @@ use Packfire\Blaze\Meta\Index\PrimaryKey;
 use Packfire\Blaze\Meta\Index\Reference;
 use Packfire\Blaze\Meta\Index\ForeignKey;
 use Packfire\Blaze\Meta\Index\Key;
-
+use Packfire\Blaze\Meta\Index\Unique;
 
 use Packfire\Blaze\Meta\Entity\Entity;
 use Packfire\Blaze\Meta\Attribute\Attribute;
@@ -61,4 +61,17 @@ EOT;
         $this->assertEquals($expectation, $builder->build($index));
     }
 
+    public function testBuildUnique()
+    {
+        $entity = new Entity('\\Test', 'tests');
+        $index = new Unique();
+        $index->attributes()->add(new Attribute('testId', 'TestId', 'INT NOT NULL AUTOINCREMENT'));
+
+        $builder = new IndexBuilder($entity);
+
+        $expectation = <<<EOT
+ALTER TABLE `tests` ADD CONSTRAINT `uniq_testid` UNIQUE (`TestId`);
+EOT;
+        $this->assertEquals($expectation, $builder->build($index));
+    }
 }
