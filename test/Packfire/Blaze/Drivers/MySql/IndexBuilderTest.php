@@ -8,6 +8,7 @@ use Packfire\Blaze\Meta\Index\ForeignKey;
 
 use Packfire\Blaze\Meta\Entity\Entity;
 use Packfire\Blaze\Meta\Attribute\Attribute;
+use Packfire\Blaze\Meta\Attribute\AttributeCollection;
 
 class IndexBuilderTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,8 +30,9 @@ EOT;
     {
         $entity = new Entity('\\Test', 'tests');
 
-        $reference = new Reference('users');
-        $reference->attributes()->add(new Attribute('userId', 'UserId', 'INT NOT NULL AUTOINCREMENT'));
+        $collection = new AttributeCollection();
+        $collection->add(new Attribute('userId', 'UserId', 'INT NOT NULL AUTOINCREMENT'));
+        $reference = new Reference('users', $collection);
         
         $index = new ForeignKey($reference);
         $index->attributes()->add(new Attribute('userId', 'UserId', 'INT NOT NULL AUTOINCREMENT'));
@@ -38,7 +40,7 @@ EOT;
         $builder = new IndexBuilder($entity);
 
         $expectation = <<<EOT
-ALTER TABLE `tests` ADD CONSTRAINT `fk_userid` FOREIGN KEY (`UserId`) REFERENCE `users` (`UserId`);
+ALTER TABLE `tests` ADD CONSTRAINT `fk_userid` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`);
 EOT;
         $this->assertEquals($expectation, $builder->build($index));
     }
