@@ -25,7 +25,7 @@ class EntityLoaderTest extends \PHPUnit_Framework_TestCase
         $entity = EntityLoader::load(new \ReflectionClass(self::DUMMY));
         $attributes = $entity->attributes();
         $this->assertCount(1, $attributes);
-        $this->assertEquals('Name', $attributes[0]->name());
+        $this->assertEquals('Name', $attributes['name']->name());
     }
 
     public function testExtendedAttributes()
@@ -33,8 +33,8 @@ class EntityLoaderTest extends \PHPUnit_Framework_TestCase
         $entity = EntityLoader::load(new \ReflectionClass(self::BIGGER_DUMMY));
         $attributes = $entity->attributes();
         $this->assertCount(3, $attributes);
-        $this->assertEquals('Name', $attributes[0]->name());
-        $this->assertEquals('Age', $attributes[1]->name());
-        $this->assertEquals('height', $attributes[2]->name());
+        $this->assertEquals('Name', $attributes['name']->name());
+        $this->assertEquals('Age', $attributes['age']->name());
+        $this->assertEquals('height', $attributes['height']->name());
     }
 }

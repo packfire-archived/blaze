@@ -6,6 +6,7 @@ use phpDocumentor\Reflection\DocBlock;
 use Packfire\Blaze\Meta\Attribute\AttributeCollection;
 use Packfire\Blaze\Meta\Attribute\AttributeLoader;
 use Packfire\Blaze\Meta\Index\IndexCollection;
+use Packfire\Blaze\Meta\Index\IndexLoader;
 
 class EntityLoader
 {
@@ -54,6 +55,9 @@ class EntityLoader
             $this->exploreClassHierarchy($parent, $properties, $indees);
         }
         // check parent first so that you can override later in child class
+
+        $classBlock = new DocBlock($class);
+        $indices = IndexLoader::explore($classBlock);
 
         $props = $class->getProperties();
         foreach ($props as $property) {

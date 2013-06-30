@@ -10,10 +10,11 @@ class AttributeCollection implements CollectionInterface
 
     public function add($value)
     {
-        if (!($value instanceof AttributeInterface)) {
-            throw new \InvalidArgumentException("$value expected to be of type Packfire\\Blaze\\Meta\\Attribute\\AttributeInterface in AttributeCollection.");
+        if ($value instanceof AttributeInterface) {
+            $this->attributes[$value->property()] = $value;
+        } else {
+            throw new \InvalidArgumentException('$value expected to be of type Packfire\\Blaze\\Meta\\Attribute\\AttributeInterface in AttributeCollection.');
         }
-        $this->attributes[] = $value;
     }
 
     public function get($index)
