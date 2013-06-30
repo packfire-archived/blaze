@@ -9,9 +9,13 @@ class Key implements IndexInterface
 {
     protected $attributes;
 
-    public function __construct()
+    public function __construct(AttributeCollection $attributes = null)
     {
-        $this->attributes = new AttributeCollection();
+        if ($attributes) {
+            $this->attributes = $attributes;
+        } else {
+            $this->attributes = new AttributeCollection();
+        }
     }
 
     public function attributes()

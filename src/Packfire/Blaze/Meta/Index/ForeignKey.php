@@ -11,9 +11,13 @@ class ForeignKey implements IndexInterface
 
     protected $reference;
 
-    public function __construct(Reference $reference)
+    public function __construct(Reference $reference, AttributeCollection $attributes = null)
     {
-        $this->attributes = new AttributeCollection();
+        if ($attributes) {
+            $this->attributes = $attributes;
+        } else {
+            $this->attributes = new AttributeCollection();
+        }
         $this->reference = $reference;
     }
 

@@ -18,4 +18,18 @@ class ForeignKeyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('fk_', $index->name());
         $this->assertEquals($reference, $index->reference());
     }
+
+    public function testConstructWithCollection()
+    {
+        $foreignAttributes = new AttributeCollection();
+        $foreignAttributes->add(new Attribute('test', 'test', 'text'));
+        $reference = new Reference('test', $foreignAttributes);
+
+        $attributes = new AttributeCollection();
+        $attributes->add(new Attribute('test', 'test', 'text'));
+        $index = new ForeignKey($reference, $attributes);
+        $this->assertEquals($attributes, $index->attributes());
+        $this->assertEquals('fk_test', $index->name());
+        $this->assertEquals($reference, $index->reference());
+    }
 }
