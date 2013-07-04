@@ -9,7 +9,7 @@ class BiggerDummy extends Dummy
 {
     /**
      * @id Fixture\Test::$testId
-     */ 
+     */
     public $dummyId;
 
     /**
