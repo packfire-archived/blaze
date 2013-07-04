@@ -37,4 +37,13 @@ class EntityLoaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Age', $attributes['age']->name());
         $this->assertEquals('height', $attributes['height']->name());
     }
+
+    public function testIndexes()
+    {
+        $entity = EntityLoader::load(new \ReflectionClass(self::BIGGER_DUMMY));
+        $indexes = $entity->indexes();
+        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Index\\IndexCollection', $indexes);
+        $this->assertCount(1, $indexes);
+        $this->assertInstanceOf('Packfire\\Blaze\\Meta\\Index\\Unique', $indexes[0]);
+    }
 }

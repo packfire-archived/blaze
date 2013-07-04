@@ -30,7 +30,7 @@ class EntityLoader
             $loader = new EntityLoader();
             $loader->handle($class);
 
-            return new Entity($class->getName(), $name, $loader->attributes);
+            return new Entity($class->getName(), $name, $loader->attributes, $loader->indexes);
         }
         return null;
     }
@@ -46,18 +46,20 @@ class EntityLoader
                 $this->attributes->add($attribute);
             }
         }
+
+        $this->indexes = IndexLoader::load($indexes, $this->attributes);
     }
 
     protected function exploreClassHierarchy(\ReflectionClass $class, &$properties, &$indexes)
     {
         if ($parent = $class->getParentClass()) {
             // Recursively check for parent's class properties
-            $this->exploreClassHierarchy($parent, $properties, $indees);
+            $this->exploreClassHierarchy($parent, $properties, $indexes);
         }
         // check parent first so that you can override later in child class
 
         $classBlock = new DocBlock($class);
-        $indices = IndexLoader::explore($classBlock);
+        $indexes = array_merge($indexes, IndexLoader::explore($classBlock));
 
         $props = $class->getProperties();
         foreach ($props as $property) {
