@@ -8,6 +8,11 @@ namespace Packfire\Blaze\Fixture;
 class BiggerDummy extends Dummy
 {
     /**
+     * @id Fixture\Test::$testId
+     */ 
+    public $dummyId;
+
+    /**
      * @attribute Age
      * @type TINYINT
      * @var integer
