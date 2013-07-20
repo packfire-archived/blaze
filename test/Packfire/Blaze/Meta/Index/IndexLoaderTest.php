@@ -25,6 +25,24 @@ class IndexLoaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $result);
     }
 
+    public function testExplore2()
+    {
+        $class = new \ReflectionClass('Packfire\\Blaze\\Fixture\\FileDummy');
+        $classBlock = new DocBlock($class);
+        $result = IndexLoader::explore($classBlock);
+        $expected = array(
+            array(
+                'unique',
+                null,
+                array(
+                    'name',
+                    'hash'
+                )
+            )
+        );
+        $this->assertEquals($expected, $result);
+    }
+
     public function testLoad()
     {
         $class = new \ReflectionClass('Packfire\\Blaze\\Fixture\\Dummy');
