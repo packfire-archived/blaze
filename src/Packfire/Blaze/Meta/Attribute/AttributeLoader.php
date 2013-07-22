@@ -32,6 +32,11 @@ class AttributeLoader
             }
             if ($type) {
                 $result = new Attribute($propertyName, $attributeName, $type);
+                $loader = new IndexLoader($result, $propertyBlock);
+                $index = $loader->loadIndex();
+                if ($index) {
+                    $result->indexes()->add($index);
+                }
             }
         }
         return $result;
