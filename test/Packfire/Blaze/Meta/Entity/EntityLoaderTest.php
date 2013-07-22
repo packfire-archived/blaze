@@ -32,7 +32,7 @@ class EntityLoaderTest extends \PHPUnit_Framework_TestCase
     {
         $entity = EntityLoader::load(new \ReflectionClass(self::BIGGER_DUMMY));
         $attributes = $entity->attributes();
-        $this->assertCount(3, $attributes);
+        $this->assertCount(5, $attributes);
         $this->assertEquals('Name', $attributes['name']->name());
         $this->assertEquals('Age', $attributes['age']->name());
         $this->assertEquals('height', $attributes['height']->name());

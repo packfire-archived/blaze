@@ -19,6 +19,8 @@ class EntityBuilderTest extends \PHPUnit_Framework_TestCase
 ------
 CREATE TABLE IF NOT EXISTS `dummies` (
   `Name` TEXT,
+  `dummyId` integer,
+  `foreignId` integer,
   `Age` TINYINT,
   `height` double
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 ;

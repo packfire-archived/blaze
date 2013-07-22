@@ -9,11 +9,15 @@ class BiggerDummy extends Dummy
 {
     /**
      * @id
+     * @attribute
+     * @var integer
      */
     public $dummyId;
 
     /**
      * @id Fixture\Test $testId
+     * @attribute
+     * @var integer
      */
     public $foreignId;
 

@@ -3,6 +3,9 @@
 namespace Packfire\Blaze\Meta\Attribute;
 
 use phpDocumentor\Reflection\DocBlock;
+use Packfire\Blaze\Meta\Index\PrimaryKey;
+use Packfire\Blaze\Meta\Index\Reference;
+use Packfire\Blaze\Meta\Index\ForeignKey;
 
 class IndexLoader
 {
