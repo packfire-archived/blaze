@@ -41,17 +41,6 @@ class IndexLoader
         return $collection;
     }
 
-    public static function loadAttributeIndexes(DocBlock $docBlock)
-    {
-        $indexes = new IndexCollection();
-        $tags = $docBlock->getTagsByName('id');
-        if ($tags) {
-            foreach ($tags as $tag) {
-
-            }
-        }
-    }
-
     public static function explore(DocBlock $classBlock)
     {
         $result = array();
